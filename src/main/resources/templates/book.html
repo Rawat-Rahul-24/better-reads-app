@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Book Details</title>
+</head>
+<body>
+    
+    <h1 th:text="${book.title}">Book Title</h1>
+    <img th:src="${coverUrl}" alt="cover_image">
+    <h3 th:text="${book.authorName}">Author</h3>
+    <p th:text="${book.description}">Description</p>
+    <p th:text="${book.publishedDate}">Publisherd Date</p>
+</body>
+</html>

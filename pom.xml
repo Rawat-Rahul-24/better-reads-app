@@ -8,11 +8,11 @@
 		<version>2.5.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>io.javabrains</groupId>
-	<artifactId>github-auth-template</artifactId>
+	<groupId>io.rahul</groupId>
+	<artifactId>better-reads-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>github-auth-template</name>
-	<description>Demo project for Spring Boot</description>
+	<name>better-reads-app</name>
+	<description>Better Reads App</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -28,6 +28,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency> 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-cassandra</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.thymeleaf.extras</groupId>

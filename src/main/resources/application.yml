@@ -6,3 +6,27 @@ spring:
           github:
             client-id: Iv1.972adc4d247d37aa
             client-secret: bde353520392e13ddb1676b86ba0e999496c1c7f
+  data:
+    cassandra:
+      keyspace-name: main
+      username: NajXNSWOyysmYKaYeatAmOqs
+      password: -UZdIXZpl2ZntvA7t3DIEdeLeHiom7wxnPPcRLxoOAHnaTqu.yBnKznnXCD-Qupvzg+i+ggZLsHol5f,-zWZ6YNRR4uc53g+gRq6PxF0w_iJ8qM-DT9FbfF43L4ptaNW
+      schema-action: create-if-not-exists
+      request:
+        timeout: 10s
+      connection:
+        connection-timeout: 10s
+        init-query-timeout: 10s
+
+datadump.location:
+  :author: D:\Projects-Java\better-reads-data\authors.txt
+  :works: D:\Projects-Java\better-reads-data\works.txt
+
+datastax.astra:
+  secure-connect-bundle: secure-connect-booksreads.zip
+
+astra.db:
+  id: 648dc55b-c76b-4d35-a817-c649b817c822-1
+  region: ap-southeast-1
+  keyspace: main
+  application.token: AstraCS:NajXNSWOyysmYKaYeatAmOqs:dbea6cdd04a060793e1038a73d840719694cf5087431e1bdeb70ddb1bda5fb2e
