@@ -3,14 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" th:href="@{book.css}">
     <title>Book Details</title>
 </head>
 <body>
-    
+    <div th:insert="components/book-search :: search-panel"></div>
     <h1 th:text="${book.title}">Book Title</h1>
     <img th:src="${coverUrl}" alt="cover_image">
     <h3 th:text="${book.authorName}">Author</h3>
     <p th:text="${book.description}">Description</p>
     <p th:text="${book.publishedDate}">Publisherd Date</p>
+    <form th:if="${loginId}" th:attr="action=@{/userbook}" method="post" class="search-form">
+        <div>
+            <input type="hidden" th:name="${_csrf.parameterName}"
+            th:value="${_csrf.token}">
+            <input type="hidden" name="bookId" th:value="${book.id}"/>
+            <label for="startDate">Start Date</label>
+                <input type="date" class="startDate" name="startDate" th:value="${userBook.startDate}"/>
+           
+            <label for="endDate">End Date</label>
+                <input type="date" class="endDate" name="endDate" th:value="${userBook.endDate}">
+        
+            <label for="readingStatus">Reading Status</label>
+            <select id="status" name="status" th:field="${userBook.status}">
+                <option selected value="0">Status</option>
+                <option value="started">Started</option>
+                <option value="reading">Reading</option>
+                <option value="finished">Finished</option>
+                </select>
+            <div class="text-center">
+            Rating
+                <div class="rating">
+                    <input id="star5" name="rating" type="radio" value="5" class="radio-btn hide" />
+                    <label for="star5">☆</label>
+                    <input id="star4" name="rating" type="radio" value="4" class="radio-btn hide" />
+                    <label for="star4">☆</label>
+                    <input id="star3" name="rating" type="radio" value="3" class="radio-btn hide" />
+                    <label for="star3">☆</label>
+                    <input id="star2" name="rating" type="radio" value="2" class="radio-btn hide" />
+                    <label for="star2">☆</label>
+                    <input id="star1" name="rating" type="radio" value="1" class="radio-btn hide" />
+                    <label for="star1">☆</label>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </div>
+    </form>
 </body>
 </html>
