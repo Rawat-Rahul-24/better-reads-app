@@ -4,6 +4,11 @@
 <body>
    <div th:fragment="search-panel">
        <h4>Search</h4>
+       <form th:attr="action=@{/search}" method="get" class="search-form">
+        <label for="startDate">
+        <input type="text" class="bookName" th:name="query" placeholder="Book Name"/>
+        <button type="submit">Search</button>
+       </form>
    </div> 
 </body>
 </html>

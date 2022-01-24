@@ -7,7 +7,8 @@
     <title>Search</title>
 </head>
 <body>
-    <section class=="content">
+    <div th:insert="components/book-search :: search-panel"></div>
+    <section class="content">
     <div class="group" th:each="book: ${books}">
         <label for="name">Book Title
             <h2 th:text="${book.title}">Book Title</h2>
