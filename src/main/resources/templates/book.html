@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" th:href="@{book.css}">
+    <title>Book Details</title>
+</head>
+<body>
+    <div th:insert="components/book-search :: search-panel"></div>
+    <h1 th:text="${book.title}">Book Title</h1>
+    <img th:src="${coverUrl}" alt="cover_image">
+    <h3 th:text="${book.authorName}">Author</h3>
+    <p th:text="${book.description}">Description</p>
+    <p th:text="${book.publishedDate}">Publisherd Date</p>
+    <div class="login" th:if="${loginId == null}">
+        <p class="login-desc">Login via Github to add this book to your tracker.</p>
+        <a href="/oauth2/authorization/github">Login</a>
+    </div>
+    <form th:if="${loginId}" th:attr="action=@{/userbook}" method="post" class="status-form">
+        <div>
+            <input type="hidden" th:name="${_csrf.parameterName}"
+            th:value="${_csrf.token}">
+            <input type="hidden" name="bookId" th:value="${book.id}"/>
+            <label for="startDate">Start Date</label>
+                <input type="date" class="startDate" name="startDate" th:value="${userBook.startDate}"/>
+           
+            <label for="endDate">End Date</label>
+                <input type="date" class="endDate" name="endDate" th:value="${userBook.endDate}">
+        
+            <label for="readingStatus">Reading Status</label>
+            <select id="status" name="status" th:field="${userBook.status}">
+                <option selected value="3">Status</option>
+                <option value="0-started">Started</option>
+                <option value="1-reading">Reading</option>
+                <option value="2-finished">Finished</option>
+                </select>
+            <div class="text-center">
+            Rating
+                <div class="rating">
+                    <input id="star5" name="rating" type="radio" value="5" class="radio-btn hide" />
+                    <label for="star5">☆</label>
+                    <input id="star4" name="rating" type="radio" value="4" class="radio-btn hide" />
+                    <label for="star4">☆</label>
+                    <input id="star3" name="rating" type="radio" value="3" class="radio-btn hide" />
+                    <label for="star3">☆</label>
+                    <input id="star2" name="rating" type="radio" value="2" class="radio-btn hide" />
+                    <label for="star2">☆</label>
+                    <input id="star1" name="rating" type="radio" value="1" class="radio-btn hide" />
+                    <label for="star1">☆</label>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </div>
+    </form>
+</body>
+</html>

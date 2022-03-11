@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Better Reads</title>
+</head>
+<body>
+    <div th:insert="components/book-search :: search-panel"></div>
+    <h1>Better Reads</h1>
+    <h3>My Books</h3>
+    <div th:unless=${userHasBooks}>
+        <h4>Add some books that you want to read and track there status here.</h4>
+    </div>
+    <div th:if="${userHasBooks}" th:each="book : ${bookByUser}">
+        <img th:src="${book.coverUrl}" alt="cover">
+        <section>
+            <h4 th:text="${book.bookName}">Title</h4>
+            <label for="author">Authors
+                <h5 th:each="author : ${book.authorNames}" th:text="${author}">
+                    </h5>
+                    <!-- <h3 th:text="${book.author_name}"></h3> -->
+            </label>
+            <div th:switch="${book.readingStatus}">
+            <p th:case="'0-started'">Just Started</p>
+            <p th:case="'1-reading'">Currently Reading</p>
+            <p th:case="'2-finished'">Finished</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

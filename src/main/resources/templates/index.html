@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Demo</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width" />
+    <base href="/" />
+  </head>
+  <body>
+    <h1>Better Reads</h1>
+    <h3>Welcome to the Better Reads App.</h3>
+    <div class="login">
+      Login: <a href="/oauth2/authorization/github">click here</a>
+    </div>
+    <div class="search">
+    <p>Or search for a book.</p>
+      <div th:insert="components/book-search :: search-panel"></div>
+      </div>
+  </body>
+</html>

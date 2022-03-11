@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+</head>
+<body>
+    <div th:insert="components/book-search :: search-panel"></div>
+    <section class="content">
+    <div class="group" th:each="book: ${books}">
+        <label for="name">Book Title
+            <h2 th:text="${book.title}">Book Title</h2>
+        </label>
+        <label for="author">
+            <h3 th:each="author : ${book.author_name}" th:text="${author}"></h4>
+            <!-- <h3 th:text="${book.author_name}"></h3> -->
+        </label>
+        <label for="publish">
+            <h4 th:text="${book.publishedYear}"></h4>
+        </label>
+        <a th:href="@{'/books/'+${book.key}}">Go to book</a>
+        <img th:src="${book.cover_i}" alt="cover">
+    </div>
+    </section>
+</body>
+</html>
